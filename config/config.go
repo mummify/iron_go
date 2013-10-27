@@ -11,6 +11,8 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+
+  mummify "github.com/mummify/ptah/config"
 )
 
 // Contains the configuration for an iron.io service.
@@ -119,6 +121,8 @@ func (s *Settings) productEnv(family, product string) {
 
 func (s *Settings) localConfig(family, product string) {
 	s.UseConfigFile(family, product, "iron.json")
+  s.Token = mummify.MustGetString("iron.io.token")
+  s.ProjectId = mummify.MustGetString("iron.io.project.id")
 }
 
 func (s *Settings) commonEnv(prefix string) {
