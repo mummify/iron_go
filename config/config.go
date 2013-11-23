@@ -121,8 +121,8 @@ func (s *Settings) productEnv(family, product string) {
 
 func (s *Settings) localConfig(family, product string) {
 	s.UseConfigFile(family, product, "iron.json")
-  s.Token = mummify.MustGetString("iron.io.token")
-  s.ProjectId = mummify.MustGetString("iron.io.project.id")
+  s.Token = mummify.DefaultClient().MustGetString("iron.io.token")
+  s.ProjectId = mummify.DefaultClient().MustGetString("iron.io.project.id")
 }
 
 func (s *Settings) commonEnv(prefix string) {
